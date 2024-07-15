@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion</title>
+</head>
+<body>
+    <h1>Recusrsion Practice Codes</h1>
+    <h2>Factorial</h2>
+    <input type="number" name="" id="numberInput">
+    <button onclick="displayFac()">Calculate factorial</button>
+    <div id="result"></div>
+    <br><br>
+    <h2>Reverse String</h2>
+    <input type="text" name="" id="strInput" placeholder="Input String">
+    <button onclick="displayRevStr()">Reverse</button>
+    <div id="resultRevStr"></div>
+    <br><br>
+    <h2>Sum of N natural no.</h2>
+    <input type="number" name="" id="numInput">
+    <button onclick="displaySum()">Calculate Sum</button>
+    <div id="resultSum"></div>
+    <h2>Fibonacci series</h2>
+    <input type="number" name="" id="fibInput">
+    <button onclick="displayFib()">Show Fibonacci series</button>
+    <div id="resultFib"></div>
+    <script>
+        function displayFac(){
+            function factorial(n) {
+                if (n == 1 || n == 0) {
+                    return 1
+                }
+                else {
+                    return n * factorial(n-1)
+                }
+            }
+            const num = document.getElementById("numberInput").value
+            const result = factorial(parseInt(num));
+            const resultDiv = document.getElementById('result')
+            resultDiv.innerHTML = `${result}`
+        }
+
+        function displayRevStr() {
+            function revstr(str) {
+                if (str==="") {
+                    return ""
+                }
+                return revstr(str.substring(1))+str.charAt(0)
+            }
+            const str = document.getElementById("strInput").value
+            const res = revstr(str)
+            const resultDiv = document.getElementById("resultRevStr")
+            resultDiv.innerHTML = `${res}`
+        }
+
+        function displaySum(){
+            function sum(n){
+                if (n<=1){
+                    return n
+                }
+                return n + sum(n - 1)
+            }
+            const num = parseInt(document.getElementById("numInput").value)
+            const res = sum(num)
+            const resultDiv = document.getElementById("resultSum")
+            resultDiv.innerHTML = `${res}`
+        }
+
+        function displayFib(){
+            function fib(n){
+                if(n==0 || n==1){
+                    return n
+                }
+                return fib(n - 1) + fib(n - 2)
+            }
+            function fibseries(n){
+                let series = []
+                for(let i = 0;i<n;i++){
+                    series.push(fib(i))
+                }
+                return series
+            }
+            const num = parseInt(document.getElementById("fibInput").value)
+            const res = fibseries(num)
+            const resultDiv = document.getElementById("resultFib")
+            resultDiv.innerHTML = `${res}`
+        }
+    </script>
+</body>
+</html>
